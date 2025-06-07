@@ -1,0 +1,33 @@
+server:
+  port: 9091
+
+# 数据库配置
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    username: root
+    password: 1234
+    url: jdbc:mysql://localhost:3306/db01?useUnicode=true&characterEncoding=utf-8&allowMultiQueries=true&useSSL=false&serverTimezone=GMT%2b8&allowPublicKeyRetrieval=true
+  servlet:
+    multipart:
+      max-file-size: 100MB
+      max-request-size: 100MB
+
+# 配置mybatis实体和xml映射
+mybatis:
+  mapper-locations: classpath:mapper/*.xml
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+    map-underscore-to-camel-case: true
+
+# 文件上传的前缀url
+fileBaseUrl: http://localhost:9091
+
+# 阿里云OSS配置
+aliyun:
+  oss:
+    endpoint: oss-cn-beijing.aliyuncs.com  # 替换为您的OSS地域节点
+    accessKeyId: LTAI5tMJ9Uz5jHgBZgiFdChK         # 替换为您的AccessKey ID
+    accessKeySecret: 6E9xy6I0ynrVXhkhOHV2dZgkXiabRE # 替换为您的AccessKey Secret
+    bucketName: java-ab-c            # 替换为您的Bucket名称
+    baseUrl: https://java-ab-c.oss-cn-beijing.aliyuncs.com  # OSS文件访问基础URL
